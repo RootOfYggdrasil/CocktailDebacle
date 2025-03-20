@@ -1,0 +1,30 @@
+# Build
+bin/
+obj/
+*.dll
+
+# Entity Framework
+Migrations/
+
+# Configurazione
+appsettings.json
+appsettings.Development.json
+
+# Visual Studio
+.vscode/
+*.vs/
+*.user
+*.suo
+*.cache
+
+# Log e temp files
+logs/
+*.log
+
+# Node.js (se usi qualche pacchetto JS)
+node_modules/
+
+# Certificati e chiavi
+*.pfx
+*.pem
+*.key
