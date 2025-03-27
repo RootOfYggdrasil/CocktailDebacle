@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using CocktailDebacleBackend.Data;
+﻿using CocktailDebacleBackend.Data;
+using CocktailDebacleBackend.Dtos.User;
+using CocktailDebacleBackend.Mappers;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace CocktailDebacleBackend.Controllers
 {
@@ -24,7 +22,6 @@ namespace CocktailDebacleBackend.Controllers
         {
             // we need to convert the objecct to List, to do a Deferred Execution
             var users = _context.Users.ToList();
-
             return Ok(users);
         }
 
@@ -40,5 +37,15 @@ namespace CocktailDebacleBackend.Controllers
             return Ok(user);
         }
 
-    }
+        [HttpPost]
+		public IActionResult Create([FromBody] CreateUserRequestDto userDto)
+		{
+			var userModel = userDto.ToUserFromCreateDTO();
+			_context.Users.Add(userModel);
+			_context.SaveChanges();
+			return CreatedAtAction(nameof(GetById), new { id = userModel.UserId }, userModel);
+		}
+
+
+	}
 }
