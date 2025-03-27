@@ -46,6 +46,23 @@ namespace CocktailDebacleBackend.Controllers
 			return CreatedAtAction(nameof(GetById), new { id = userModel.UserId }, userModel);
 		}
 
+        [HttpPut]
+        [Route("{id}")]
+		public IActionResult Update([FromRoute] int id, [FromBody] UpdateUserRequestDto updateDto)
+		{
+			var userModel = _context.Users.FirstOrDefault(u => u.UserId == id);
+			if (userModel == null)
+			{
+				return NotFound();
+			}
+
+			userModel.Username = updateDto.Username;
+			userModel.Email = updateDto.Email;
+			userModel.ConsentProfile = updateDto.ConsentProfile;
+			_context.Users.Update(userModel);
+			_context.SaveChanges();
+			return Ok(userModel);
+		} 
 
 	}
 }

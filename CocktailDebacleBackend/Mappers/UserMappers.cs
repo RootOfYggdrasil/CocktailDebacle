@@ -3,7 +3,7 @@ using CocktailDebacleBackend.Models;
 
 namespace CocktailDebacleBackend.Mappers
 {
-    public static class UserMappers
+    public static class UserMappers 
     {
         public static UserDto ToUserDto(this UserDto userModel)
         {
