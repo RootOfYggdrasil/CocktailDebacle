@@ -28,7 +28,7 @@ namespace CocktailDebacleBackend.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] int id)
         {
-            var user= _context.Users.Find(id);
+            var user = _context.Users.Find(id);
 
             if (user == null)
             {
@@ -38,31 +38,45 @@ namespace CocktailDebacleBackend.Controllers
         }
 
         [HttpPost]
-		public IActionResult Create([FromBody] CreateUserRequestDto userDto)
-		{
-			var userModel = userDto.ToUserFromCreateDTO();
-			_context.Users.Add(userModel);
-			_context.SaveChanges();
-			return CreatedAtAction(nameof(GetById), new { id = userModel.UserId }, userModel);
-		}
+        public IActionResult Create([FromBody] CreateUserRequestDto userDto)
+        {
+            var userModel = userDto.ToUserFromCreateDTO();
+            _context.Users.Add(userModel);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById), new { id = userModel.UserId }, userModel);
+        }
 
         [HttpPut]
         [Route("{id}")]
-		public IActionResult Update([FromRoute] int id, [FromBody] UpdateUserRequestDto updateDto)
+        public IActionResult Update([FromRoute] int id, [FromBody] UpdateUserRequestDto updateDto)
+        {
+            var userModel = _context.Users.FirstOrDefault(u => u.UserId == id);
+            if (userModel == null)
+            {
+                return NotFound();
+            }
+
+            userModel.Username = updateDto.Username;
+            userModel.Email = updateDto.Email;
+            userModel.ConsentProfile = updateDto.ConsentProfile;
+            _context.Users.Update(userModel);
+            _context.SaveChanges();
+            return Ok(userModel);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult Delete([FromRoute] int id)
 		{
 			var userModel = _context.Users.FirstOrDefault(u => u.UserId == id);
 			if (userModel == null)
 			{
 				return NotFound();
 			}
-
-			userModel.Username = updateDto.Username;
-			userModel.Email = updateDto.Email;
-			userModel.ConsentProfile = updateDto.ConsentProfile;
-			_context.Users.Update(userModel);
+			_context.Users.Remove(userModel);
 			_context.SaveChanges();
-			return Ok(userModel);
-		} 
+			return NoContent();
+		}
 
 	}
 }
