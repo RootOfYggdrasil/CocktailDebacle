@@ -3,7 +3,7 @@ using CocktailDebacleBackend.Dtos.User;
 using CocktailDebacleBackend.Mappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using CocktailDebacleBackend.Interfaces;
 
 
 namespace CocktailDebacleBackend.Controllers
@@ -12,10 +12,12 @@ namespace CocktailDebacleBackend.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        public UserController(AppDbContext context)
+		private readonly IUserRepository _userRepo;
+		private readonly AppDbContext _context;
+        public UserController(AppDbContext context, IUserRepository userRepo)
         {
-            _context = context;
+            _userRepo = userRepo;
+			_context = context;
         }
 
         //Get is a Read
@@ -23,7 +25,7 @@ namespace CocktailDebacleBackend.Controllers
         public async Task<IActionResult> GetAll()
         {
             // we need to convert the objecct to List, to do a Deferred Execution
-            var users = await _context.Users.ToListAsync();
+            var users = await _userRepo.GetAllAsync();
 
             var userDtos = users.Select(u => u.ToUserDto());
 

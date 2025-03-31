@@ -3,6 +3,8 @@ using CocktailDebacleBackend.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using CocktailDebacleBackend.Interfaces;
+using CocktailDebacleBackend.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 System.Diagnostics.Debug.Print(builder.Configuration.GetConnectionString("DefaultConnection"));
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
