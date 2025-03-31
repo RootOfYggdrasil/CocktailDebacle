@@ -5,7 +5,7 @@ namespace CocktailDebacleBackend.Mappers
 {
     public static class UserMappers 
     {
-        public static UserDto ToUserDto(this UserDto userModel)
+        public static UserDto ToUserDto(this User userModel)
         {
             return new UserDto
             {
