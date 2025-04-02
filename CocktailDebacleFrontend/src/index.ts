@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 
 // Servire file statici (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, "../public")));
