@@ -35,9 +35,9 @@ namespace CocktailDebacleBackend.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepo.GetByIdAsync(id);
 
-            if (user == null)
+			if (user == null)
             {
                 return NotFound();
             }
@@ -48,26 +48,19 @@ namespace CocktailDebacleBackend.Controllers
         public async Task<IActionResult> Create([FromBody] CreateUserRequestDto userDto)
         {
             var userModel = userDto.ToUserFromCreateDTO();
-            await _context.Users.AddAsync(userModel);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetById), new { id = userModel.UserId }, userModel);
+            await _userRepo.CreateAsync(userModel);
+			return CreatedAtAction(nameof(GetById), new { id = userModel.UserId }, userModel);
         }
 
         [HttpPut]
         [Route("{id}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateUserRequestDto updateDto)
         {
-            var userModel = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
-            if (userModel == null)
+            var userModel = await _userRepo.UpdateAsync(id, updateDto);
+			if (userModel == null)
             {
                 return NotFound();
             }
-
-            userModel.Username = updateDto.Username;
-            userModel.Email = updateDto.Email;
-            userModel.ConsentProfile = updateDto.ConsentProfile;
-            _context.Users.Update(userModel);
-			await _context.SaveChangesAsync();
             return Ok(userModel);
         }
         
@@ -76,13 +69,11 @@ namespace CocktailDebacleBackend.Controllers
         [Route("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
 		{
-			var userModel = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
+			var userModel = await _userRepo.DeleteAsync(id);
 			if (userModel == null)
 			{
 				return NotFound();
 			}
-			_context.Users.Remove(userModel);
-			await _context.SaveChangesAsync();
 			return NoContent();
 		}
 

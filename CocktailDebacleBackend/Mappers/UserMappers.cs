@@ -27,5 +27,15 @@ namespace CocktailDebacleBackend.Mappers
 				ConsentProfile = createUserRequestDto.ConsentProfile
 			};
 		}
+		public static User ToUserFromUpdateDTO(this UpdateUserRequestDto updateUserRequestDto)
+		{
+			return new User
+			{
+				Username = updateUserRequestDto.Username,
+				Email = updateUserRequestDto.Email,
+				PasswordHash = updateUserRequestDto.Password,
+				ConsentProfile = updateUserRequestDto.ConsentProfile
+			};
+		}
 	}
 }
