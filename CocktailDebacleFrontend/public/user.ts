@@ -27,5 +27,5 @@ async function getUserId() {
 }
 
 function goToLogin() {
-    window.location.href = "./login/login.html";
+    window.location.href = "/login/login.html";
 }

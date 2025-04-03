@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COCKTAIL DÉBÂCLE - Signup</title>
+    <link rel="stylesheet" href="signup.css">
+    <script src="./../user.js"></script>
+  </head>
+    <body>
+      <div class="header">
+          <h1>COCKTAIL DÉBÂCLE</h1>
+          <div class="div-background"></div>
+      </div>
+
+      <div class="login-container">
+          <h2 class="login-title">Login</h2>
+          
+          <form>
+              <div class="input-group">
+                  <input type="text" class="input-field" placeholder="Username">
+              </div>
+              
+              <div class="input-group">
+                  <input type="email" class="input-field" placeholder="Email">
+              </div>
+
+              <div class="input-group">
+                  <input type="password" class="input-field" placeholder="Password">
+              </div>
+              
+              <div class="input-group">
+                  <input type="password" class="input-field" placeholder="Confirm Password">
+              </div>
+
+              <div class="checkbox-group">
+                  <input type="checkbox" class="checkbox-group" id="Terms">
+                  <label for="Terms">By clicking Accept & Sign Up or Continue, you agree to the Terms of Use, Privacy Policy and Cookie Policy</label>
+              </div>
+
+              <div class="checkbox-group">
+                  <input type="checkbox" class="checkbox-group" id="DataUsage">
+                  <label for="DataUsage">I agree to the use of my data for personalized ads and content</label>
+              </div>
+
+              <button type="button" class="login-btn">Signup</button>
+          </form>
+          <div class="signup-section">
+              <p>Already have an account?</p>
+              <button type="button" class="signup-btn" onclick="goToLogin()">Login</button>
+      </div>
+  </body>
+</html>
