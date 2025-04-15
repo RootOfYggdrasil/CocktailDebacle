@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Webcrumbs Plugin</title>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="home.css" />
+        <script src="./home.js" defer></script>
+    </head>
+  
+    <body class="d-flex flex-column align-items-center justify-content-center min-vh-100 bg-gradient">
+        <div id="homepage" class="w-100">
+            <div class="sticky-top bg-dark shadow-lg">
+                <div class="container py-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="https://webcrumbs.cloud/placeholder" class="text-white text-decoration-none fs-3 fw-bold">
+                            CocktailDB
+                        </a>
+                        <nav class="d-none d-md-flex gap-4">
+                            <a href="https://webcrumbs.cloud/placeholder" class="text-white text-decoration-none hover-link">Home</a>
+                            <a href="https://webcrumbs.cloud/placeholder" class="text-white text-decoration-none hover-link">Popular</a>
+                            <a href="https://webcrumbs.cloud/placeholder" class="text-white text-decoration-none hover-link">Categories</a>
+                            <a href="./../login/login.html" class="text-white text-decoration-none hover-link">Logout</a>
+                        </nav>
+                        <button class="d-md-none text-white border-0 bg-transparent">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="container py-5">
+                <div id="cocktail-grid" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4"></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+body {
+  background: linear-gradient(135deg, #ffffff, #d4d4d4);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+
+#homepage .sticky {
+  position: sticky;
+}
+
+#homepage .z-50 {
+  z-index: 50;
+}
+
+#homepage .rounded-lg {
+  border-radius: 24px;
+}
+
+#homepage .bg-black {
+  background-color: #000;
+}
+
+#homepage .bg-gray-800 {
+  background-color: #1f2937;
+}
+
+#homepage .bg-gray-900 {
+  background-color: #111627;
+}
+
+#homepage .object-cover {
+  object-fit: cover;
+}
+
+/* Text customization */
+#homepage .text-xl {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+#homepage .font-bold {
+  font-weight: 700;
+}
+
+#homepage .font-semibold {
+  font-weight: 600;
+}
+
+#homepage .text-white {
+  color: #ffffff;
+}
+
+#homepage .transition-transform {
+  transition: transform 0.15s;
+}
+
+#homepage .hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Da aggiungere ai bottoni della navbar appena sfondo a tema */
+#homepage .hover\:text-primary-400:hover {
+  color: #9478ff;
+}
+
+#homepage .overflow-hidden {
+  overflow: hidden;
+}
